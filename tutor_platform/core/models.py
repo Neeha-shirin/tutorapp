@@ -17,8 +17,8 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_approved', True)
-        extra_fields.setdefault('role', 'admin')  # auto-assign admin role
-        extra_fields.setdefault('mobile_number', None)  # don't require it
+        extra_fields.setdefault('role', 'admin')  
+        extra_fields.setdefault('mobile_number', None)  
 
         return self.create_user(email, password, **extra_fields)
 

@@ -131,3 +131,26 @@ class ResetPasswordSerializer(serializers.Serializer):
         user.clear_reset_token()
         user.save()
         return user
+
+class StudentProfileSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(source='user.email')
+    mobile_number = serializers.CharField(source='user.mobile_number')
+    is_approved = serializers.BooleanField(source='user.is_approved')
+    is_rejected = serializers.BooleanField(source='user.is_rejected')
+    role = serializers.CharField(source='user.role')
+
+    class Meta:
+        model = StudentProfile
+        fields = ['email', 'mobile_number', 'full_name', 'class_name', 'required_subjects', 'location', 'is_approved', 'is_rejected', 'role']
+
+
+class TutorProfileSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(source='user.email')
+    mobile_number = serializers.CharField(source='user.mobile_number')
+    is_approved = serializers.BooleanField(source='user.is_approved')
+    is_rejected = serializers.BooleanField(source='user.is_rejected')
+    role = serializers.CharField(source='user.role')
+
+    class Meta:
+        model = TutorProfile
+        fields = ['email', 'mobile_number', 'full_name', 'gender', 'location', 'qualification', 'experience_years', 'hourly_rate', 'subjects', 'description', 'available_days', 'is_approved', 'is_rejected', 'role']
